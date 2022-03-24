@@ -13,20 +13,83 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _assets_to_do_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/to-do.png */ "./src/assets/to-do.png");
+/* harmony import */ var _assets_inbox_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/inbox.png */ "./src/assets/inbox.png");
+/* harmony import */ var _assets_calendar_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/calendar.png */ "./src/assets/calendar.png");
+/* harmony import */ var _assets_next_week_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/next-week.png */ "./src/assets/next-week.png");
+
+
+
 
 
 function createHeader() {
   var header = document.createElement('header');
+  var logoLink = document.createElement('a');
   var img = document.createElement('img');
   img.src = _assets_to_do_png__WEBPACK_IMPORTED_MODULE_0__;
-  img.classList.add('logo');
-  header.appendChild(img);
+  img.classList.add('logo-img');
+  logoLink.appendChild(img);
+  var logoText = document.createElement('div');
+  logoText.classList.add('logo-text');
+  logoText.innerHTML = 'ToDo App';
+  header.appendChild(logoLink);
+  header.appendChild(logoText);
   return header;
+}
+
+function createBody() {
+  var appBody = document.createElement('section');
+  appBody.classList.add('app-body');
+  appBody.appendChild(createSideMenu());
+  appBody.appendChild(createTaskDisplay());
+  return appBody;
+}
+
+function createSideMenu() {
+  var sideBar = document.createElement('div');
+  sideBar.classList.add('sidebar');
+  var inboxDiv = document.createElement('div');
+  inboxDiv.classList.add('sidebar-box');
+  var inboxText = document.createElement('p');
+  var inboxImg = document.createElement('img');
+  inboxImg.src = _assets_inbox_png__WEBPACK_IMPORTED_MODULE_1__;
+  inboxImg.classList.add('sidebar-img');
+  inboxText.innerHTML = 'Inbox';
+  inboxDiv.appendChild(inboxImg);
+  inboxDiv.appendChild(inboxText);
+  var todayDiv = document.createElement('div');
+  var todayText = document.createElement('p');
+  todayDiv.classList.add('sidebar-box');
+  var todayImg = document.createElement('img');
+  todayImg.src = _assets_calendar_png__WEBPACK_IMPORTED_MODULE_2__;
+  todayImg.classList.add('sidebar-img');
+  todayText.innerHTML = 'Today';
+  todayDiv.appendChild(todayImg);
+  todayDiv.appendChild(todayText);
+  var weekDiv = document.createElement('div');
+  var weekText = document.createElement('p');
+  var weekImg = document.createElement('img');
+  weekImg.src = _assets_next_week_png__WEBPACK_IMPORTED_MODULE_3__;
+  weekDiv.classList.add('sidebar-box');
+  weekImg.classList.add('sidebar-img');
+  weekText.innerHTML = 'This week';
+  weekDiv.appendChild(weekImg);
+  weekDiv.appendChild(weekText);
+  sideBar.appendChild(inboxDiv);
+  sideBar.appendChild(todayDiv);
+  sideBar.appendChild(weekDiv);
+  return sideBar;
+}
+
+function createTaskDisplay() {
+  var taskDisplay = document.createElement('div');
+  taskDisplay.classList.add('task-display');
+  return taskDisplay;
 }
 
 function createUI() {
   var content = document.getElementById("container");
   content.appendChild(createHeader());
+  content.appendChild(createBody());
   return content;
 }
 
@@ -53,7 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nheader {\n  background-color: #f4f4f4;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;AACJ;;AAEA;EACI,yBAAA;AACJ","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nheader {\r\n    background-color: #f4f4f4;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nheader {\n  background-color: grey;\n  padding: 10px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\nheader .logo-text {\n  color: #fff;\n  font-size: 38px;\n}\n\nheader .logo-img {\n  width: 60px;\n  height: 65px;\n}\n\n.app-body {\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n}\n\n.app-body .sidebar {\n  background-color: #F3E9DD;\n  padding: 20px;\n  height: 100vh;\n}\n\n.sidebar-box {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  align-items: center;\n}\n\n.sidebar .sidebar-img {\n  height: 15px;\n  width: 18px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;AACJ;;AAEA;EACI,sBAAA;EACA,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,WAAA;EACA,eAAA;AACJ;;AAEA;EACI,WAAA;EACA,YAAA;AACJ;;AAEA;EACI,aAAA;EACA,8BAAA;AACJ;;AAEA;EACI,yBAAA;EACA,aAAA;EACA,aAAA;AACJ;;AAEA;EACI,aAAA;EACA,mBAAA;EACA,SAAA;EACA,mBAAA;AACJ;;AAEA;EACI,YAAA;EACA,WAAA;AACJ","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nheader {\r\n    background-color: grey;\r\n    padding: 10px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n}\r\n\r\nheader .logo-text {\r\n    color: #fff;\r\n    font-size: 38px;\r\n}\r\n\r\nheader .logo-img {\r\n    width: 60px;\r\n    height: 65px;\r\n}\r\n\r\n.app-body {\r\n    display: grid;\r\n    grid-template-columns: 1fr 2fr;\r\n}\r\n\r\n.app-body .sidebar {\r\n    background-color: #F3E9DD;\r\n    padding: 20px;\r\n    height: 100vh;\r\n}\r\n\r\n.sidebar-box {\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 10px;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar .sidebar-img {\r\n    height: 15px;\r\n    width: 18px;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -562,6 +625,36 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/assets/calendar.png":
+/*!*********************************!*\
+  !*** ./src/assets/calendar.png ***!
+  \*********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "calendar.png";
+
+/***/ }),
+
+/***/ "./src/assets/inbox.png":
+/*!******************************!*\
+  !*** ./src/assets/inbox.png ***!
+  \******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "inbox.png";
+
+/***/ }),
+
+/***/ "./src/assets/next-week.png":
+/*!**********************************!*\
+  !*** ./src/assets/next-week.png ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "next-week.png";
+
+/***/ }),
+
 /***/ "./src/assets/to-do.png":
 /*!******************************!*\
   !*** ./src/assets/to-do.png ***!
@@ -691,4 +784,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle5f9a233e41fbd4afc3e5.js.map
+//# sourceMappingURL=bundle3bfc113738ed4065af97.js.map
