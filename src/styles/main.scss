@@ -21,3 +21,31 @@ header .logo-img {
     width: 60px;
     height: 65px;
 }
+
+.app-body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.app-body .sidebar {
+    background-color: #F3E9DD;
+    padding: 20px;
+    height: 100vh;
+}
+
+.sidebar-box {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+
+.sidebar-box p {
+    font-size: 18px;
+}
+
+.sidebar .sidebar-img {
+    height: 15px;
+    width: 18px;
+}
