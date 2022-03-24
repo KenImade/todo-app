@@ -1,11 +1,7 @@
 import './styles/main.scss'
+import createUI from './modules/UI'
 
-function initializeWebsite() {
-    const content = document.getElementById('container')
+(function initializeWebsite() {
+    createUI()
+})()
 
-    content.innerHTML = 'Hello World'
-
-    return content
-}
-
-initializeWebsite()
