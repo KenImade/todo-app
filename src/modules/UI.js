@@ -2,13 +2,19 @@ import todoImg from '../assets/to-do.png'
 
 function createHeader() {
     const header = document.createElement('header')
-    let logoLink = document.createElement("a")
+    let logoLink = document.createElement('a')
     let img = document.createElement('img')
     img.src = todoImg
-    img.classList.add('logo')
+    img.classList.add('logo-img')
     logoLink.appendChild(img)
 
+    let logoText = document.createElement('div')
+    logoText.classList.add('logo-text')
+    logoText.innerHTML = 'ToDo App'
+    
+
     header.appendChild(logoLink)
+    header.appendChild(logoText)
     return header
 }
 
