@@ -2,4 +2,5 @@ import './styles/main.scss'
 import UI from './modules/UI'
 
 
-document.addEventListener('DOMContentLoaded', UI.loadHomepage())
+
+document.addEventListener('DOMContentLoaded', UI.loadApp)

@@ -26,9 +26,23 @@ var UI = /*#__PURE__*/function () {
     _classCallCheck(this, UI);
   }
 
-  _createClass(UI, null, [{
-    key: "loadHomepage",
-    value: function loadHomepage() {}
+  _createClass(UI, [{
+    key: "loadApp",
+    value: function loadApp() {
+      loadInbox();
+    }
+  }, {
+    key: "loadInbox",
+    value: function loadInbox() {
+      var content = document.getElementById('display');
+      var inboxPage = document.createElement('div');
+      var inboxTitle = document.createElement('h3');
+      inboxTitle.innerHTML = 'Inbox';
+      inboxPage.appendChild(inboxTitle);
+      content.innerHTML = '';
+      content.appendChild(inboxPage);
+      return content;
+    }
   }]);
 
   return UI;
@@ -56,8 +70,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nheader {\n  background-color: #D3E4CD;\n  padding: 10px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\nheader .logo {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  gap: 10px;\n}\n\nheader h3.logo-text {\n  color: #fff;\n  font-size: 38px;\n}\n\nheader #logo-img {\n  width: 60px;\n  height: 65px;\n}\n\nbody .main {\n  display: grid;\n  grid-template-columns: 1fr 4fr;\n}\n\n.main .sidebar {\n  display: flex;\n  flex-direction: column;\n  background-color: #FEF5ED;\n  gap: 30px;\n  padding: 30px;\n}\n\n.sidebar .categories,\n.projects .project-list,\n.sidebar .projects {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.categories .category-btn,\n.project-list .add-project {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  justify-content: left;\n  align-items: center;\n  background-color: #FEF5ED;\n  border: none;\n}\n\nbutton:hover {\n  background-color: rgba(0, 0, 0, 0.7);\n}\n\n.add-project p,\n.category-btn p {\n  font-size: 15px;\n}\n\n.add-project i,\n.category-btn i {\n  font-size: 24px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAGA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;AAFJ;;AAKA;EACI,yBAVW;EAWX,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;AAFJ;;AAKA;EACI,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,SAAA;AAFJ;;AAKA;EACI,WAAA;EACA,eAAA;AAFJ;;AAKA;EACI,WAAA;EACA,YAAA;AAFJ;;AAKA;EACI,aAAA;EACA,8BAAA;AAFJ;;AAKA;EACI,aAAA;EACA,sBAAA;EACA,yBAzCa;EA0Cb,SAAA;EACA,aAAA;AAFJ;;AAKA;;;EAGI,aAAA;EACA,sBAAA;EACA,SAAA;AAFJ;;AAKA;;EAEI,aAAA;EACA,mBAAA;EACA,SAAA;EAEA,qBAAA;EACA,mBAAA;EACA,yBA9Da;EA+Db,YAAA;AAHJ;;AAMA;EACI,oCAAA;AAHJ;;AAMA;;EAEI,eAAA;AAHJ;;AAMA;;EAEI,eAAA;AAHJ","sourcesContent":["$primarycolor: #D3E4CD;\r\n$secondarycolor: #FEF5ED;\r\n\r\n* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nheader {\r\n    background-color: $primarycolor;\r\n    padding: 10px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n}\r\n\r\nheader .logo {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\nheader h3.logo-text {\r\n    color: #fff;\r\n    font-size: 38px;\r\n}\r\n\r\nheader #logo-img {\r\n    width: 60px;\r\n    height: 65px;\r\n}\r\n\r\nbody .main {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr;\r\n}\r\n\r\n.main .sidebar {\r\n    display: flex;\r\n    flex-direction: column;\r\n    background-color: $secondarycolor;\r\n    gap: 30px;\r\n    padding: 30px;\r\n}\r\n\r\n.sidebar .categories, \r\n.projects .project-list,\r\n.sidebar .projects{\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n}\r\n\r\n.categories .category-btn, \r\n.project-list .add-project{\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 10px;\r\n\r\n    justify-content: left;\r\n    align-items: center;\r\n    background-color: $secondarycolor;\r\n    border: none;\r\n}\r\n\r\nbutton:hover {\r\n    background-color: rgba($color: #000000, $alpha: 0.7);\r\n}\r\n\r\n.add-project p,\r\n.category-btn p {\r\n    font-size: 15px;\r\n}\r\n\r\n.add-project i,\r\n.category-btn i {\r\n    font-size: 24px;\r\n}\r\n\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Fira Sans\", sans-serif;\n}\n\nheader {\n  background-color: #D3E4CD;\n  padding: 10px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  height: 80px;\n}\n\nheader .logo {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  gap: 10px;\n}\n\nheader h3.logo-text {\n  color: #fff;\n  font-size: 38px;\n}\n\nheader #logo-img {\n  width: 60px;\n  height: 65px;\n}\n\nbody .main {\n  display: grid;\n  grid-template-columns: 1fr 4fr;\n  height: calc(100vh - 130px);\n}\n\n.main .sidebar {\n  display: flex;\n  flex-direction: column;\n  background-color: #FEF5ED;\n  gap: 30px;\n  padding: 30px;\n}\n\n.sidebar .categories,\n.projects .project-list,\n.sidebar .projects {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.categories .category-btn,\n.project-list .add-project {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  padding: 5px;\n  justify-content: left;\n  align-items: center;\n  background-color: #FEF5ED;\n  border: none;\n}\n\n.category-btn:hover,\n.add-project:hover {\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.add-project p,\n.category-btn p {\n  font-size: 15px;\n}\n\n.add-project i,\n.category-btn i {\n  font-size: 24px;\n}\n\nfooter {\n  height: 50px;\n  background-color: #D3E4CD;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\nfooter a {\n  font-size: 18px;\n  text-decoration: none;\n  color: #000;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAOA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;EACA,oCATQ;AAIZ;;AAQA;EACI,yBAXW;EAYX,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,YAAA;AALJ;;AAQA;EACI,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,SAAA;AALJ;;AAQA;EACI,WAAA;EACA,eAAA;AALJ;;AAQA;EACI,WAAA;EACA,YAAA;AALJ;;AAQA;EACI,aAAA;EACA,8BAAA;EACA,2BAAA;AALJ;;AAQA;EACI,aAAA;EACA,sBAAA;EACA,yBA5Ca;EA6Cb,SAAA;EACA,aAAA;AALJ;;AAQA;;;EAGI,aAAA;EACA,sBAAA;EACA,SAAA;AALJ;;AAQA;;EAEI,aAAA;EACA,mBAAA;EACA,SAAA;EACA,YAAA;EAEA,qBAAA;EACA,mBAAA;EACA,yBAlEa;EAmEb,YAAA;AANJ;;AASA;;EAEI,oCAAA;AANJ;;AASA;;EAEI,eAAA;AANJ;;AASA;;EAEI,eAAA;AANJ;;AASA;EACI,YAAA;EACA,yBAxFW;EAyFX,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;AANJ;;AASA;EACI,eAAA;EACA,qBAAA;EACA,WAAA;AANJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');\r\n\r\n$fira-font: 'Fira Sans', sans-serif;\r\n\r\n$primarycolor: #D3E4CD;\r\n$secondarycolor: #FEF5ED;\r\n\r\n* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: $fira-font;\r\n}\r\n\r\nheader {\r\n    background-color: $primarycolor;\r\n    padding: 10px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    height: 80px;\r\n}\r\n\r\nheader .logo {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\nheader h3.logo-text {\r\n    color: #fff;\r\n    font-size: 38px;\r\n}\r\n\r\nheader #logo-img {\r\n    width: 60px;\r\n    height: 65px;\r\n}\r\n\r\nbody .main {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr;\r\n    height: calc(100vh - (80px + 50px));\r\n}\r\n\r\n.main .sidebar {\r\n    display: flex;\r\n    flex-direction: column;\r\n    background-color: $secondarycolor;\r\n    gap: 30px;\r\n    padding: 30px;\r\n}\r\n\r\n.sidebar .categories, \r\n.projects .project-list,\r\n.sidebar .projects{\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n}\r\n\r\n.categories .category-btn, \r\n.project-list .add-project{\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 10px;\r\n    padding: 5px;\r\n\r\n    justify-content: left;\r\n    align-items: center;\r\n    background-color: $secondarycolor;\r\n    border: none;\r\n}\r\n\r\n.category-btn:hover,\r\n.add-project:hover {\r\n    background-color: rgba($color: #000000, $alpha: 0.4);\r\n}\r\n\r\n.add-project p,\r\n.category-btn p {\r\n    font-size: 15px;\r\n}\r\n\r\n.add-project i,\r\n.category-btn i {\r\n    font-size: 24px;\r\n}\r\n\r\nfooter {\r\n    height: 50px;\r\n    background-color: $primarycolor;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\nfooter a {\r\n    font-size: 18px;\r\n    text-decoration: none;\r\n    color: #000;\r\n}\r\n\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -687,9 +702,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_UI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/UI */ "./src/modules/UI.js");
 
 
-document.addEventListener('DOMContentLoaded', _modules_UI__WEBPACK_IMPORTED_MODULE_1__["default"].loadHomepage());
+document.addEventListener('DOMContentLoaded', _modules_UI__WEBPACK_IMPORTED_MODULE_1__["default"].loadInbox());
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlee6194b77f9df201565b1.js.map
+//# sourceMappingURL=bundle9db4893dab44bceb4e00.js.map
