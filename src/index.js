@@ -1,7 +1,5 @@
 import './styles/main.scss'
-import createUI from './modules/UI'
+import UI from './modules/UI'
 
-(function initializeWebsite() {
-    createUI()
-})()
 
+document.addEventListener('DOMContentLoaded', UI.loadHomepage())

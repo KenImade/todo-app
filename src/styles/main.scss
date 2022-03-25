@@ -1,3 +1,6 @@
+$primarycolor: #D3E4CD;
+$secondarycolor: #FEF5ED;
+
 * {
     margin: 0;
     padding: 0;
@@ -5,47 +8,76 @@
 }
 
 header {
-    background-color: grey;
+    background-color: $primarycolor;
     padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-header .logo-text {
+header .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+header h3.logo-text {
     color: #fff;
     font-size: 38px;
 }
 
-header .logo-img {
+header #logo-img {
     width: 60px;
     height: 65px;
 }
 
-.app-body {
+body .main {
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
 
-.app-body .sidebar {
-    background-color: #F3E9DD;
-    padding: 20px;
-    height: 100vh;
+.main .sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: $secondarycolor;
+    gap: 30px;
+    padding: 30px;
 }
 
-.sidebar-box {
+.sidebar .categories, 
+.projects .project-list,
+.sidebar .projects{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.categories .category-btn, 
+.project-list .add-project{
     display: flex;
     flex-direction: row;
     gap: 10px;
+    padding: 5px;
+
+    justify-content: left;
     align-items: center;
-    padding: 10px;
+    background-color: $secondarycolor;
+    border: none;
 }
 
-.sidebar-box p {
-    font-size: 18px;
+.category-btn:hover,
+.add-project:hover {
+    background-color: rgba($color: #000000, $alpha: 0.4);
 }
 
-.sidebar .sidebar-img {
-    height: 15px;
-    width: 18px;
+.add-project p,
+.category-btn p {
+    font-size: 15px;
 }
+
+.add-project i,
+.category-btn i {
+    font-size: 24px;
+}
+
