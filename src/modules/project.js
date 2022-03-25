@@ -1,4 +1,5 @@
 import Task from "./task"
+import { isToday, isThisWeek } from 'date-fns'
 
 export default class Project {
     constructor() {
@@ -9,7 +10,7 @@ export default class Project {
         let todayProjectList = []
 
         for(task in this.projectList) {
-            if (task.getDueDate === todaydate) {
+            if (isToday(task.getDueDate)) {
                 todayProjectList.push(task)
             }
         }
@@ -20,7 +21,7 @@ export default class Project {
         let weeksProjectList = []
 
         for (task in this.projectList) {
-            if ((task.getDueDate >= weekstartdate) && (task.getDueDate <= weekenddate)) {
+            if (isThisWeek(task.getDueDate)) {
                 weeksProjectList.push(task)
             }
         }
