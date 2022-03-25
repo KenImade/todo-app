@@ -10,90 +10,31 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ UI)
 /* harmony export */ });
 /* harmony import */ var _assets_to_do_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/to-do.png */ "./src/assets/to-do.png");
-/* harmony import */ var _assets_inbox_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/inbox.png */ "./src/assets/inbox.png");
-/* harmony import */ var _assets_calendar_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/calendar.png */ "./src/assets/calendar.png");
-/* harmony import */ var _assets_next_week_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/next-week.png */ "./src/assets/next-week.png");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 
 
+var UI = /*#__PURE__*/function () {
+  function UI() {
+    _classCallCheck(this, UI);
+  }
+
+  _createClass(UI, null, [{
+    key: "loadHomepage",
+    value: function loadHomepage() {}
+  }]);
+
+  return UI;
+}();
 
 
-function createHeader() {
-  var header = document.createElement('header');
-  var logoLink = document.createElement('a');
-  var img = document.createElement('img');
-  img.src = _assets_to_do_png__WEBPACK_IMPORTED_MODULE_0__;
-  img.classList.add('logo-img');
-  logoLink.appendChild(img);
-  var logoText = document.createElement('div');
-  logoText.classList.add('logo-text');
-  logoText.innerHTML = 'ToDo App';
-  header.appendChild(logoLink);
-  header.appendChild(logoText);
-  return header;
-}
-
-function createBody() {
-  var appBody = document.createElement('section');
-  appBody.classList.add('app-body');
-  appBody.appendChild(createSideMenu());
-  appBody.appendChild(createTaskDisplay());
-  return appBody;
-}
-
-function createSideMenu() {
-  var sideBar = document.createElement('div');
-  sideBar.classList.add('sidebar');
-  var inboxDiv = document.createElement('div');
-  inboxDiv.classList.add('sidebar-box');
-  var inboxText = document.createElement('p');
-  var inboxImg = document.createElement('img');
-  inboxImg.src = _assets_inbox_png__WEBPACK_IMPORTED_MODULE_1__;
-  inboxImg.classList.add('sidebar-img');
-  inboxText.innerHTML = 'Inbox';
-  inboxDiv.appendChild(inboxImg);
-  inboxDiv.appendChild(inboxText);
-  var todayDiv = document.createElement('div');
-  var todayText = document.createElement('p');
-  todayDiv.classList.add('sidebar-box');
-  var todayImg = document.createElement('img');
-  todayImg.src = _assets_calendar_png__WEBPACK_IMPORTED_MODULE_2__;
-  todayImg.classList.add('sidebar-img');
-  todayText.innerHTML = 'Today';
-  todayDiv.appendChild(todayImg);
-  todayDiv.appendChild(todayText);
-  var weekDiv = document.createElement('div');
-  var weekText = document.createElement('p');
-  var weekImg = document.createElement('img');
-  weekImg.src = _assets_next_week_png__WEBPACK_IMPORTED_MODULE_3__;
-  weekDiv.classList.add('sidebar-box');
-  weekImg.classList.add('sidebar-img');
-  weekText.innerHTML = 'This week';
-  weekDiv.appendChild(weekImg);
-  weekDiv.appendChild(weekText);
-  sideBar.appendChild(inboxDiv);
-  sideBar.appendChild(todayDiv);
-  sideBar.appendChild(weekDiv);
-  return sideBar;
-}
-
-function createTaskDisplay() {
-  var taskDisplay = document.createElement('div');
-  taskDisplay.classList.add('task-display');
-  return taskDisplay;
-}
-
-function createUI() {
-  var content = document.getElementById("container");
-  content.appendChild(createHeader());
-  content.appendChild(createBody());
-  return content;
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createUI);
 
 /***/ }),
 
@@ -116,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nheader {\n  background-color: grey;\n  padding: 10px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\nheader .logo-text {\n  color: #fff;\n  font-size: 38px;\n}\n\nheader .logo-img {\n  width: 60px;\n  height: 65px;\n}\n\n.app-body {\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n}\n\n.app-body .sidebar {\n  background-color: #F3E9DD;\n  padding: 20px;\n  height: 100vh;\n}\n\n.sidebar-box {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  align-items: center;\n}\n\n.sidebar .sidebar-img {\n  height: 15px;\n  width: 18px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;AACJ;;AAEA;EACI,sBAAA;EACA,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,WAAA;EACA,eAAA;AACJ;;AAEA;EACI,WAAA;EACA,YAAA;AACJ;;AAEA;EACI,aAAA;EACA,8BAAA;AACJ;;AAEA;EACI,yBAAA;EACA,aAAA;EACA,aAAA;AACJ;;AAEA;EACI,aAAA;EACA,mBAAA;EACA,SAAA;EACA,mBAAA;AACJ;;AAEA;EACI,YAAA;EACA,WAAA;AACJ","sourcesContent":["* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nheader {\r\n    background-color: grey;\r\n    padding: 10px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n}\r\n\r\nheader .logo-text {\r\n    color: #fff;\r\n    font-size: 38px;\r\n}\r\n\r\nheader .logo-img {\r\n    width: 60px;\r\n    height: 65px;\r\n}\r\n\r\n.app-body {\r\n    display: grid;\r\n    grid-template-columns: 1fr 2fr;\r\n}\r\n\r\n.app-body .sidebar {\r\n    background-color: #F3E9DD;\r\n    padding: 20px;\r\n    height: 100vh;\r\n}\r\n\r\n.sidebar-box {\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 10px;\r\n    align-items: center;\r\n}\r\n\r\n.sidebar .sidebar-img {\r\n    height: 15px;\r\n    width: 18px;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nheader {\n  background-color: #D3E4CD;\n  padding: 10px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\nheader .logo {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  gap: 10px;\n}\n\nheader h3.logo-text {\n  color: #fff;\n  font-size: 38px;\n}\n\nheader #logo-img {\n  width: 60px;\n  height: 65px;\n}\n\nbody .main {\n  display: grid;\n  grid-template-columns: 1fr 4fr;\n}\n\n.main .sidebar {\n  display: flex;\n  flex-direction: column;\n  background-color: #FEF5ED;\n  gap: 30px;\n  padding: 30px;\n}\n\n.sidebar .categories,\n.projects .project-list,\n.sidebar .projects {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.categories .category-btn,\n.project-list .add-project {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  justify-content: left;\n  align-items: center;\n  background-color: #FEF5ED;\n  border: none;\n}\n\nbutton:hover {\n  background-color: rgba(0, 0, 0, 0.7);\n}\n\n.add-project p,\n.category-btn p {\n  font-size: 15px;\n}\n\n.add-project i,\n.category-btn i {\n  font-size: 24px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAGA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;AAFJ;;AAKA;EACI,yBAVW;EAWX,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;AAFJ;;AAKA;EACI,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,SAAA;AAFJ;;AAKA;EACI,WAAA;EACA,eAAA;AAFJ;;AAKA;EACI,WAAA;EACA,YAAA;AAFJ;;AAKA;EACI,aAAA;EACA,8BAAA;AAFJ;;AAKA;EACI,aAAA;EACA,sBAAA;EACA,yBAzCa;EA0Cb,SAAA;EACA,aAAA;AAFJ;;AAKA;;;EAGI,aAAA;EACA,sBAAA;EACA,SAAA;AAFJ;;AAKA;;EAEI,aAAA;EACA,mBAAA;EACA,SAAA;EAEA,qBAAA;EACA,mBAAA;EACA,yBA9Da;EA+Db,YAAA;AAHJ;;AAMA;EACI,oCAAA;AAHJ;;AAMA;;EAEI,eAAA;AAHJ;;AAMA;;EAEI,eAAA;AAHJ","sourcesContent":["$primarycolor: #D3E4CD;\r\n$secondarycolor: #FEF5ED;\r\n\r\n* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nheader {\r\n    background-color: $primarycolor;\r\n    padding: 10px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n}\r\n\r\nheader .logo {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\nheader h3.logo-text {\r\n    color: #fff;\r\n    font-size: 38px;\r\n}\r\n\r\nheader #logo-img {\r\n    width: 60px;\r\n    height: 65px;\r\n}\r\n\r\nbody .main {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr;\r\n}\r\n\r\n.main .sidebar {\r\n    display: flex;\r\n    flex-direction: column;\r\n    background-color: $secondarycolor;\r\n    gap: 30px;\r\n    padding: 30px;\r\n}\r\n\r\n.sidebar .categories, \r\n.projects .project-list,\r\n.sidebar .projects{\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n}\r\n\r\n.categories .category-btn, \r\n.project-list .add-project{\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 10px;\r\n\r\n    justify-content: left;\r\n    align-items: center;\r\n    background-color: $secondarycolor;\r\n    border: none;\r\n}\r\n\r\nbutton:hover {\r\n    background-color: rgba($color: #000000, $alpha: 0.7);\r\n}\r\n\r\n.add-project p,\r\n.category-btn p {\r\n    font-size: 15px;\r\n}\r\n\r\n.add-project i,\r\n.category-btn i {\r\n    font-size: 24px;\r\n}\r\n\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -625,36 +566,6 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/assets/calendar.png":
-/*!*********************************!*\
-  !*** ./src/assets/calendar.png ***!
-  \*********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "calendar.png";
-
-/***/ }),
-
-/***/ "./src/assets/inbox.png":
-/*!******************************!*\
-  !*** ./src/assets/inbox.png ***!
-  \******************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "inbox.png";
-
-/***/ }),
-
-/***/ "./src/assets/next-week.png":
-/*!**********************************!*\
-  !*** ./src/assets/next-week.png ***!
-  \**********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "next-week.png";
-
-/***/ }),
-
 /***/ "./src/assets/to-do.png":
 /*!******************************!*\
   !*** ./src/assets/to-do.png ***!
@@ -776,12 +687,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_UI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/UI */ "./src/modules/UI.js");
 
 
-
-(function initializeWebsite() {
-  (0,_modules_UI__WEBPACK_IMPORTED_MODULE_1__["default"])();
-})();
+document.addEventListener('DOMContentLoaded', _modules_UI__WEBPACK_IMPORTED_MODULE_1__["default"].loadHomepage());
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle3bfc113738ed4065af97.js.map
+//# sourceMappingURL=bundlee6194b77f9df201565b1.js.map
