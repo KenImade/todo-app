@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
+$fira-font: 'Fira Sans', sans-serif;
+
 $primarycolor: #D3E4CD;
 $secondarycolor: #FEF5ED;
 
@@ -5,6 +9,7 @@ $secondarycolor: #FEF5ED;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: $fira-font;
 }
 
 header {
@@ -13,6 +18,7 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 80px;
 }
 
 header .logo {
@@ -35,6 +41,7 @@ header #logo-img {
 body .main {
     display: grid;
     grid-template-columns: 1fr 4fr;
+    height: calc(100vh - (80px + 50px));
 }
 
 .main .sidebar {
@@ -79,5 +86,20 @@ body .main {
 .add-project i,
 .category-btn i {
     font-size: 24px;
+}
+
+footer {
+    height: 50px;
+    background-color: $primarycolor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #000;
 }
 
