@@ -1,9 +1,12 @@
 import todoImg from '../assets/to-do.png'
+import Project from './project'
 import Controller from './controller'
 
 export default class UI {
 
     static content = document.getElementById('display')
+
+    static inboxToDoList = new Project()
 
     static resetContentBox() {
         this.content.innerHTML = ''
@@ -33,10 +36,17 @@ export default class UI {
             this.loadThisWeeksTasks()
         })
 
-        let addProjectBtn = document.getElementById('add-project-btn')
-        addProjectBtn.addEventListener('click', () => {
-            console.log('adding project!!!')
-            Controller.openOverlayContainer()
+        let openProjectFormBtn = document.getElementById('add-project-btn')
+        openProjectFormBtn.addEventListener('click', () => {
+            let form = document.getElementById('add-project-form')
+            form.classList.add('open')
+        })
+
+        let projectFormCloseBtn = document.getElementById('project-form-cancel-btn')
+        projectFormCloseBtn.addEventListener('click', () => {
+            console.log('close form')
+            let form = document.getElementById('add-project-form')
+            form.classList.remove('open')
         })
     }
 
@@ -73,5 +83,9 @@ export default class UI {
 
         this.content.appendChild(thisweekPage)
         return this.content
+    }
+
+    static createProject() {
+
     }
 }

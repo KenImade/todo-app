@@ -15,8 +15,6 @@
         </div>
     </header>
 
-    <div id="overlay"></div>
-
     <main class="main">
         <div class="sidebar">
             <div class="categories">
@@ -34,15 +32,24 @@
                 </button>
             </div>
 
-            <div class="projects">
+            <div class="projects" id="projects">
                 <h3 class="title" id="title">Projects</h3>
 
-                <div class="project-list">
-                    <button class="add-project" id="add-project-btn">
-                        <i class="fa-solid fa-plus"></i>
-                        <p>Add Project</p>
-                    </button>
+                <div class="project-list" id="project-list">
+                    <div class="add-project-form" id="add-project-form">
+                        <label for='pname'>Project Name </label>
+                        <input type= 'text' id='pname' name='pname' class= 'project-name' required>
+                        <div class = 'project-form-btns'>
+                            <button class = 'project-form-submit-btn btn' id = 'project-form-submit-btn'>Submit</button>
+                            <button class = 'project-form-cancel-btn btn' id = 'project-form-cancel-btn'>Cancel</button>
+                        </div>
+                    </div>
                 </div>
+
+                <button class="add-project-btn" id="add-project-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    <p>Add Project</p>
+                </button>
             </div>
         </div>
 

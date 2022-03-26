@@ -61,7 +61,7 @@ body .main {
 }
 
 .categories .category-btn, 
-.project-list .add-project{
+.projects .add-project-btn{
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -74,16 +74,16 @@ body .main {
 }
 
 .category-btn:hover,
-.add-project:hover {
+.add-project-btn:hover {
     background-color: rgba($color: #000000, $alpha: 0.4);
 }
 
-.add-project p,
+.add-project-btn p,
 .category-btn p {
     font-size: 15px;
 }
 
-.add-project i,
+.add-project-btn i,
 .category-btn i {
     font-size: 24px;
 }
@@ -111,17 +111,30 @@ footer a {
     color: #000;
 }
 
-#overlay {
-    position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
-  }
+.add-project-form {
+    display: none;
+}
 
+.add-project-form.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    font-size: 15px;
+    padding: 5px;
+}
+
+input[class=project-name] {
+    height: 30px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.project-list .project-form-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

@@ -5,18 +5,26 @@ export default class Controller {
 
     static overlayContainer = document.getElementById('overlay')
 
-    
-
     static createAddProjectForm() {
         const projectForm = document.createElement('form')
         projectForm.classList.add('add-project-form')
-
-        this.overlayContainer.appendChild(projectForm)
-        return this.overlayContainer
+        projectForm.innerHTML = 
+            `<label for='pname'>Project Name: </label>
+             <input type= 'text' id='pname' name='pname'>
+            `
+    
+        return projectForm
     }
 
     static createTaskForm() {
 
+    }
+
+    static openAddProjectForm() {
+        const form = this.createAddProjectForm()
+        this.overlayContainer.innerHTML = ''
+        this.overlayContainer.appendChild(form)
+        this.openOverlayContainer()
     }
 
     static openOverlayContainer() {
@@ -25,6 +33,8 @@ export default class Controller {
     }
 
     static closeOverlayContainer() {
-        document.getElementById('overlay').style.display = "none";
+        let overlay = document.getElementById('overlay')
+        overlay.style.display = "none";
+        overlay.innerHTML = ''
     }
 }
