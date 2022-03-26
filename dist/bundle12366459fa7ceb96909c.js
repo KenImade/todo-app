@@ -13,7 +13,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ UI)
 /* harmony export */ });
 /* harmony import */ var _assets_to_do_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/to-do.png */ "./src/assets/to-do.png");
-/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controller */ "./src/modules/controller.js");
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project */ "./src/modules/project.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './controller'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -21,6 +22,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -48,25 +50,28 @@ var UI = /*#__PURE__*/function () {
 
       var inboxBtn = document.getElementById('inbox-btn');
       inboxBtn.addEventListener('click', function () {
-        console.log('hello');
-
         _this.loadInbox();
       });
       var todayBtn = document.getElementById('today-btn');
       todayBtn.addEventListener('click', function () {
-        console.log('today');
-
         _this.loadTodayTasks();
       });
       var thisweekBtn = document.getElementById('week-btn');
       thisweekBtn.addEventListener('click', function () {
-        console.log('week');
-
         _this.loadThisWeeksTasks();
       });
-      var addProjectBtn = document.getElementById('add-project-btn');
-      addProjectBtn.addEventListener('click', function () {
-        console.log('adding project!!!');
+      var openProjectFormBtn = document.getElementById('add-project-btn');
+      openProjectFormBtn.addEventListener('click', function () {
+        var form = document.getElementById('add-project-form');
+        form.classList.add('open');
+      });
+      var closeProjectFormBtn = document.getElementById('project-form-cancel-btn');
+      closeProjectFormBtn.addEventListener('click', function () {
+        UI.closeProjectForm();
+      });
+      var submitProjectFormBtn = document.getElementById('project-form-submit-btn');
+      submitProjectFormBtn.addEventListener('click', function () {
+        UI.submitProjectForm();
       });
     }
   }, {
@@ -102,6 +107,28 @@ var UI = /*#__PURE__*/function () {
       this.content.appendChild(thisweekPage);
       return this.content;
     }
+  }, {
+    key: "createProject",
+    value: function createProject(name) {
+      var newProject = new _project__WEBPACK_IMPORTED_MODULE_1__["default"](name);
+      console.log('creating project!');
+      console.log(newProject);
+    }
+  }, {
+    key: "closeProjectForm",
+    value: function closeProjectForm() {
+      var form = document.getElementById('add-project-form');
+      form.classList.remove('open');
+    }
+  }, {
+    key: "submitProjectForm",
+    value: function submitProjectForm() {
+      var formInput = document.getElementById('pname');
+      var projectName = formInput.value;
+      this.createProject(projectName);
+      UI.closeProjectForm();
+      formInput.value = '';
+    }
   }]);
 
   return UI;
@@ -109,65 +136,7 @@ var UI = /*#__PURE__*/function () {
 
 _defineProperty(UI, "content", document.getElementById('display'));
 
-
-
-/***/ }),
-
-/***/ "./src/modules/controller.js":
-/*!***********************************!*\
-  !*** ./src/modules/controller.js ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Controller)
-/* harmony export */ });
-/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/modules/project.js");
-/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./task */ "./src/modules/task.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-var Controller = /*#__PURE__*/function () {
-  function Controller() {
-    _classCallCheck(this, Controller);
-
-    _defineProperty(this, "overlayContainer", document.getElementById('overlay'));
-  }
-
-  _createClass(Controller, [{
-    key: "createAddProjectForm",
-    value: function createAddProjectForm() {
-      var projectForm = document.createElement('form');
-      projectForm.classList.add('add-project-form');
-      this.overlayContainer.appendChild(projectForm);
-      return this.overlayContainer;
-    }
-  }, {
-    key: "createTaskForm",
-    value: function createTaskForm() {}
-  }, {
-    key: "openOverlayContainer",
-    value: function openOverlayContainer() {
-      this.overlayContainer.style.display = "block";
-    }
-  }, {
-    key: "closeOverlayContainer",
-    value: function closeOverlayContainer() {
-      this.overlayContainer.style.display = "none";
-    }
-  }]);
-
-  return Controller;
-}();
+_defineProperty(UI, "inboxToDoList", new _project__WEBPACK_IMPORTED_MODULE_1__["default"]());
 
 
 
@@ -199,7 +168,7 @@ var Project = /*#__PURE__*/function () {
   function Project() {
     _classCallCheck(this, Project);
 
-    this.projectList = [];
+    this.projectItems = [];
   }
 
   _createClass(Project, [{
@@ -207,7 +176,7 @@ var Project = /*#__PURE__*/function () {
     value: function getTodaysProjecs() {
       var todayProjectList = [];
 
-      for (task in this.projectList) {
+      for (task in this.projectItems) {
         if ((0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(task.getDueDate)) {
           todayProjectList.push(task);
         }
@@ -220,7 +189,7 @@ var Project = /*#__PURE__*/function () {
     value: function getThisWeeksProjects() {
       var weeksProjectList = [];
 
-      for (task in this.projectList) {
+      for (task in this.projectItems) {
         if ((0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(task.getDueDate)) {
           weeksProjectList.push(task);
         }
@@ -231,18 +200,18 @@ var Project = /*#__PURE__*/function () {
   }, {
     key: "getProjects",
     value: function getProjects() {
-      return this.projectList;
+      return this.projectItems;
     }
   }, {
     key: "addTaskToProject",
     value: function addTaskToProject(name, desc) {
       task = new _task__WEBPACK_IMPORTED_MODULE_0__["default"](name, desc);
-      this.projectList.push(task);
+      this.projectItems.push(task);
     }
   }, {
     key: "getTaskFromProject",
     value: function getTaskFromProject(name) {
-      for (task in this.projectList) {
+      for (task in this.projectItems) {
         if (task.name === name) {
           return task;
         }
@@ -251,9 +220,9 @@ var Project = /*#__PURE__*/function () {
   }, {
     key: "deleteTaskFromProject",
     value: function deleteTaskFromProject(name) {
-      for (var i = 0; i < this.projectList + 1; i++) {
-        if (this.projectList[i].name === name) {
-          this.projectList.splice(i, 1);
+      for (var i = 0; i < this.projectItems + 1; i++) {
+        if (this.projectItems[i].name === name) {
+          this.projectItems.splice(i, 1);
         }
       }
     }
@@ -315,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Fira Sans\", sans-serif;\n}\n\nheader {\n  background-color: #D3E4CD;\n  padding: 10px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  height: 80px;\n}\n\nheader .logo {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  gap: 10px;\n}\n\nheader h3.logo-text {\n  color: #fff;\n  font-size: 38px;\n}\n\nheader #logo-img {\n  width: 60px;\n  height: 65px;\n}\n\nbody .main {\n  display: grid;\n  grid-template-columns: 1fr 4fr;\n  height: calc(100vh - 130px);\n}\n\n.main .sidebar {\n  display: flex;\n  flex-direction: column;\n  background-color: #FEF5ED;\n  gap: 30px;\n  padding: 30px;\n}\n\n.sidebar .categories,\n.projects .project-list,\n.sidebar .projects {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.categories .category-btn,\n.project-list .add-project {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  padding: 5px;\n  justify-content: left;\n  align-items: center;\n  background-color: #FEF5ED;\n  border: none;\n}\n\n.category-btn:hover,\n.add-project:hover {\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.add-project p,\n.category-btn p {\n  font-size: 15px;\n}\n\n.add-project i,\n.category-btn i {\n  font-size: 24px;\n}\n\n.main .display {\n  padding: 30px;\n}\n\n.display h3 {\n  font-size: 30px;\n}\n\nfooter {\n  height: 50px;\n  background-color: #D3E4CD;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\nfooter a {\n  font-size: 18px;\n  text-decoration: none;\n  color: #000;\n}\n\n#overlay {\n  position: fixed;\n  /* Sit on top of the page content */\n  display: none;\n  /* Hidden by default */\n  width: 100%;\n  /* Full width (cover the whole page) */\n  height: 100%;\n  /* Full height (cover the whole page) */\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.5);\n  /* Black background with opacity */\n  z-index: 2;\n  /* Specify a stack order in case you're using a different order for other elements */\n  cursor: pointer;\n  /* Add a pointer on hover */\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAOA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;EACA,oCATQ;AAIZ;;AAQA;EACI,yBAXW;EAYX,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,YAAA;AALJ;;AAQA;EACI,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,SAAA;AALJ;;AAQA;EACI,WAAA;EACA,eAAA;AALJ;;AAQA;EACI,WAAA;EACA,YAAA;AALJ;;AAQA;EACI,aAAA;EACA,8BAAA;EACA,2BAAA;AALJ;;AAQA;EACI,aAAA;EACA,sBAAA;EACA,yBA5Ca;EA6Cb,SAAA;EACA,aAAA;AALJ;;AAQA;;;EAGI,aAAA;EACA,sBAAA;EACA,SAAA;AALJ;;AAQA;;EAEI,aAAA;EACA,mBAAA;EACA,SAAA;EACA,YAAA;EAEA,qBAAA;EACA,mBAAA;EACA,yBAlEa;EAmEb,YAAA;AANJ;;AASA;;EAEI,oCAAA;AANJ;;AASA;;EAEI,eAAA;AANJ;;AASA;;EAEI,eAAA;AANJ;;AASA;EACI,aAAA;AANJ;;AASA;EACI,eAAA;AANJ;;AASA;EACI,YAAA;EACA,yBAhGW;EAiGX,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;AANJ;;AASA;EACI,eAAA;EACA,qBAAA;EACA,WAAA;AANJ;;AASA;EACI,eAAA;EAAiB,mCAAA;EACjB,aAAA;EAAe,sBAAA;EACf,WAAA;EAAa,sCAAA;EACb,YAAA;EAAc,uCAAA;EACd,MAAA;EACA,OAAA;EACA,QAAA;EACA,SAAA;EACA,oCAAA;EAAmC,kCAAA;EACnC,UAAA;EAAY,oFAAA;EACZ,eAAA;EAAiB,2BAAA;AACrB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');\r\n\r\n$fira-font: 'Fira Sans', sans-serif;\r\n\r\n$primarycolor: #D3E4CD;\r\n$secondarycolor: #FEF5ED;\r\n\r\n* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: $fira-font;\r\n}\r\n\r\nheader {\r\n    background-color: $primarycolor;\r\n    padding: 10px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    height: 80px;\r\n}\r\n\r\nheader .logo {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\nheader h3.logo-text {\r\n    color: #fff;\r\n    font-size: 38px;\r\n}\r\n\r\nheader #logo-img {\r\n    width: 60px;\r\n    height: 65px;\r\n}\r\n\r\nbody .main {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr;\r\n    height: calc(100vh - (80px + 50px));\r\n}\r\n\r\n.main .sidebar {\r\n    display: flex;\r\n    flex-direction: column;\r\n    background-color: $secondarycolor;\r\n    gap: 30px;\r\n    padding: 30px;\r\n}\r\n\r\n.sidebar .categories, \r\n.projects .project-list,\r\n.sidebar .projects{\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n}\r\n\r\n.categories .category-btn, \r\n.project-list .add-project{\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 10px;\r\n    padding: 5px;\r\n\r\n    justify-content: left;\r\n    align-items: center;\r\n    background-color: $secondarycolor;\r\n    border: none;\r\n}\r\n\r\n.category-btn:hover,\r\n.add-project:hover {\r\n    background-color: rgba($color: #000000, $alpha: 0.4);\r\n}\r\n\r\n.add-project p,\r\n.category-btn p {\r\n    font-size: 15px;\r\n}\r\n\r\n.add-project i,\r\n.category-btn i {\r\n    font-size: 24px;\r\n}\r\n\r\n.main .display {\r\n    padding: 30px;\r\n}\r\n\r\n.display h3 {\r\n    font-size: 30px;\r\n}\r\n\r\nfooter {\r\n    height: 50px;\r\n    background-color: $primarycolor;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\nfooter a {\r\n    font-size: 18px;\r\n    text-decoration: none;\r\n    color: #000;\r\n}\r\n\r\n#overlay {\r\n    position: fixed; /* Sit on top of the page content */\r\n    display: none; /* Hidden by default */\r\n    width: 100%; /* Full width (cover the whole page) */\r\n    height: 100%; /* Full height (cover the whole page) */\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: rgba(0,0,0,0.5); /* Black background with opacity */\r\n    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */\r\n    cursor: pointer; /* Add a pointer on hover */\r\n  }\r\n\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Fira Sans\", sans-serif;\n}\n\nheader {\n  background-color: #D3E4CD;\n  padding: 10px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  height: 80px;\n}\n\nheader .logo {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  gap: 10px;\n}\n\nheader h3.logo-text {\n  color: #fff;\n  font-size: 38px;\n}\n\nheader #logo-img {\n  width: 60px;\n  height: 65px;\n}\n\nbody .main {\n  display: grid;\n  grid-template-columns: 1fr 4fr;\n  height: calc(100vh - 130px);\n}\n\n.main .sidebar {\n  display: flex;\n  flex-direction: column;\n  background-color: #FEF5ED;\n  gap: 30px;\n  padding: 30px;\n}\n\n.sidebar .categories,\n.projects .project-list,\n.sidebar .projects {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.categories .category-btn,\n.projects .add-project-btn {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  padding: 5px;\n  justify-content: left;\n  align-items: center;\n  background-color: #FEF5ED;\n  border: none;\n}\n\n.category-btn:hover,\n.add-project-btn:hover {\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.add-project-btn p,\n.category-btn p {\n  font-size: 15px;\n}\n\n.add-project-btn i,\n.category-btn i {\n  font-size: 24px;\n}\n\n.main .display {\n  padding: 30px;\n}\n\n.display h3 {\n  font-size: 30px;\n}\n\nfooter {\n  height: 50px;\n  background-color: #D3E4CD;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\nfooter a {\n  font-size: 18px;\n  text-decoration: none;\n  color: #000;\n}\n\n.add-project-form {\n  display: none;\n}\n\n.add-project-form.open {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 10px;\n}\n\n.btn {\n  font-size: 15px;\n  padding: 5px;\n}\n\ninput[class=project-name] {\n  height: 30px;\n  border-radius: 5px;\n  width: 100%;\n}\n\n.project-list .project-form-btns {\n  display: flex;\n  flex-direction: row;\n  gap: 20px;\n}", "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAOA;EACI,SAAA;EACA,UAAA;EACA,sBAAA;EACA,oCATQ;AAIZ;;AAQA;EACI,yBAXW;EAYX,aAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,YAAA;AALJ;;AAQA;EACI,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,SAAA;AALJ;;AAQA;EACI,WAAA;EACA,eAAA;AALJ;;AAQA;EACI,WAAA;EACA,YAAA;AALJ;;AAQA;EACI,aAAA;EACA,8BAAA;EACA,2BAAA;AALJ;;AAQA;EACI,aAAA;EACA,sBAAA;EACA,yBA5Ca;EA6Cb,SAAA;EACA,aAAA;AALJ;;AAQA;;;EAGI,aAAA;EACA,sBAAA;EACA,SAAA;AALJ;;AAQA;;EAEI,aAAA;EACA,mBAAA;EACA,SAAA;EACA,YAAA;EAEA,qBAAA;EACA,mBAAA;EACA,yBAlEa;EAmEb,YAAA;AANJ;;AASA;;EAEI,oCAAA;AANJ;;AASA;;EAEI,eAAA;AANJ;;AASA;;EAEI,eAAA;AANJ;;AASA;EACI,aAAA;AANJ;;AASA;EACI,eAAA;AANJ;;AASA;EACI,YAAA;EACA,yBAhGW;EAiGX,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;AANJ;;AASA;EACI,eAAA;EACA,qBAAA;EACA,WAAA;AANJ;;AASA;EACI,aAAA;AANJ;;AASA;EACI,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,SAAA;AANJ;;AASA;EACI,eAAA;EACA,YAAA;AANJ;;AASA;EACI,YAAA;EACA,kBAAA;EACA,WAAA;AANJ;;AASA;EACI,aAAA;EACA,mBAAA;EACA,SAAA;AANJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');\r\n\r\n$fira-font: 'Fira Sans', sans-serif;\r\n\r\n$primarycolor: #D3E4CD;\r\n$secondarycolor: #FEF5ED;\r\n\r\n* {\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: $fira-font;\r\n}\r\n\r\nheader {\r\n    background-color: $primarycolor;\r\n    padding: 10px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    height: 80px;\r\n}\r\n\r\nheader .logo {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\nheader h3.logo-text {\r\n    color: #fff;\r\n    font-size: 38px;\r\n}\r\n\r\nheader #logo-img {\r\n    width: 60px;\r\n    height: 65px;\r\n}\r\n\r\nbody .main {\r\n    display: grid;\r\n    grid-template-columns: 1fr 4fr;\r\n    height: calc(100vh - (80px + 50px));\r\n}\r\n\r\n.main .sidebar {\r\n    display: flex;\r\n    flex-direction: column;\r\n    background-color: $secondarycolor;\r\n    gap: 30px;\r\n    padding: 30px;\r\n}\r\n\r\n.sidebar .categories, \r\n.projects .project-list,\r\n.sidebar .projects{\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n}\r\n\r\n.categories .category-btn, \r\n.projects .add-project-btn{\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 10px;\r\n    padding: 5px;\r\n\r\n    justify-content: left;\r\n    align-items: center;\r\n    background-color: $secondarycolor;\r\n    border: none;\r\n}\r\n\r\n.category-btn:hover,\r\n.add-project-btn:hover {\r\n    background-color: rgba($color: #000000, $alpha: 0.4);\r\n}\r\n\r\n.add-project-btn p,\r\n.category-btn p {\r\n    font-size: 15px;\r\n}\r\n\r\n.add-project-btn i,\r\n.category-btn i {\r\n    font-size: 24px;\r\n}\r\n\r\n.main .display {\r\n    padding: 30px;\r\n}\r\n\r\n.display h3 {\r\n    font-size: 30px;\r\n}\r\n\r\nfooter {\r\n    height: 50px;\r\n    background-color: $primarycolor;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\nfooter a {\r\n    font-size: 18px;\r\n    text-decoration: none;\r\n    color: #000;\r\n}\r\n\r\n.add-project-form {\r\n    display: none;\r\n}\r\n\r\n.add-project-form.open {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\n.btn {\r\n    font-size: 15px;\r\n    padding: 5px;\r\n}\r\n\r\ninput[class=project-name] {\r\n    height: 30px;\r\n    border-radius: 5px;\r\n    width: 100%;\r\n}\r\n\r\n.project-list .project-form-btns {\r\n    display: flex;\r\n    flex-direction: row;\r\n    gap: 20px;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1399,4 +1368,4 @@ document.addEventListener('DOMContentLoaded', _modules_UI__WEBPACK_IMPORTED_MODU
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle01bfceb37e467eb3bdb1.js.map
+//# sourceMappingURL=bundle12366459fa7ceb96909c.js.map

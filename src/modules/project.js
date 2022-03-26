@@ -2,14 +2,19 @@ import Task from "./task"
 import { isToday, isThisWeek } from 'date-fns'
 
 export default class Project {
-    constructor() {
-        this.projectList = []
+    constructor(name) {
+        this.name = name
+        this.projectItems = []
+    }
+
+    getName() {
+        return this.name
     }
 
     getTodaysProjecs() {
         let todayProjectList = []
 
-        for(task in this.projectList) {
+        for(task in this.projectItems) {
             if (isToday(task.getDueDate)) {
                 todayProjectList.push(task)
             }
@@ -20,7 +25,7 @@ export default class Project {
     getThisWeeksProjects() {
         let weeksProjectList = []
 
-        for (task in this.projectList) {
+        for (task in this.projectItems) {
             if (isThisWeek(task.getDueDate)) {
                 weeksProjectList.push(task)
             }
@@ -29,16 +34,16 @@ export default class Project {
     }
 
     getProjects() {
-        return this.projectList
+        return this.projectItems
     }
 
     addTaskToProject(name, desc) {
         task = new Task(name, desc)
-        this.projectList.push(task)
+        this.projectItems.push(task)
     }
 
     getTaskFromProject(name) {
-        for (task in this.projectList) {
+        for (task in this.projectItems) {
             if (task.name === name) {
                 return task
             }
@@ -46,9 +51,9 @@ export default class Project {
     }
 
     deleteTaskFromProject(name) {
-        for (let i = 0; i < this.projectList+1; i++ ) {
-            if (this.projectList[i].name === name) {
-                this.projectList.splice(i, 1)
+        for (let i = 0; i < this.projectItems+1; i++ ) {
+            if (this.projectItems[i].name === name) {
+                this.projectItems.splice(i, 1)
             }
         }
     }

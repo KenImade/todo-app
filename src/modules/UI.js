@@ -1,12 +1,13 @@
 import todoImg from '../assets/to-do.png'
 import Project from './project'
-import Controller from './controller'
+import ProjectList from './projectList'
+
 
 export default class UI {
 
     static content = document.getElementById('display')
 
-    static inboxToDoList = new Project()
+    static projectList = new ProjectList()
 
     static resetContentBox() {
         this.content.innerHTML = ''
@@ -20,19 +21,16 @@ export default class UI {
     static loadButtons() {
         let inboxBtn = document.getElementById('inbox-btn')
         inboxBtn.addEventListener('click', () => {
-            console.log('hello')
             this.loadInbox()
         })
 
         let todayBtn = document.getElementById('today-btn')
         todayBtn.addEventListener('click', () => {
-            console.log('today')
             this.loadTodayTasks()
         })
 
         let thisweekBtn = document.getElementById('week-btn')
         thisweekBtn.addEventListener('click', () => {
-            console.log('week')
             this.loadThisWeeksTasks()
         })
 
@@ -44,9 +42,12 @@ export default class UI {
 
         let closeProjectFormBtn = document.getElementById('project-form-cancel-btn')
         closeProjectFormBtn.addEventListener('click', () => {
-            console.log('close form')
-            let form = document.getElementById('add-project-form')
-            form.classList.remove('open')
+            UI.closeProjectForm()
+        })
+
+        let submitProjectFormBtn = document.getElementById('project-form-submit-btn')
+        submitProjectFormBtn.addEventListener('click', () => {
+            UI.submitProjectForm()
         })
     }
 
@@ -85,7 +86,36 @@ export default class UI {
         return this.content
     }
 
-    static createProject() {
+    static addToProjectList(name) {
+        let newProject = new Project(name)
+        this.projectList.addProject(newProject)
+        console.log('creating project!')
+        console.log(this.projectList)
 
+        UI.displayProjects()
+    }
+
+    static closeProjectForm() {
+        let form = document.getElementById('add-project-form')
+        form.classList.remove('open')
+    }
+
+    static submitProjectForm() {
+        let formInput = document.getElementById('pname')
+        let projectName = formInput.value
+        this.addToProjectList(projectName)
+        UI.closeProjectForm()
+        formInput.value = ''
+    }
+
+    static displayProjects() {
+        let projectDisplayDiv = document.getElementById('project-list')
+        for (let i = 0; i < this.projectList.getProjects().length+1; i++) {
+            console.log('got to loop')
+            let project = this.projectList.getProjects()[i]
+            let projectBtn = document.createElement('button')
+            projectBtn.innerHTML = project.getName()
+            projectDisplayDiv.appendChild(projectBtn)
+        }
     }
 }
