@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/24cf42c7f2.js" crossorigin="anonymous"></script>
     <title>ToDo App</title>
-<script defer src="bundle01bfceb37e467eb3bdb1.js"></script></head>
+<script defer src="bundle12366459fa7ceb96909c.js"></script></head>
 <body>
     <header>
         <div class="logo">
@@ -14,8 +14,6 @@
             <h3 class="logo-text" id="logo-text">Todo List</h3>
         </div>
     </header>
-
-    <div id="overlay"></div>
 
     <main class="main">
         <div class="sidebar">
@@ -34,15 +32,23 @@
                 </button>
             </div>
 
-            <div class="projects">
+            <div class="projects" id="projects">
                 <h3 class="title" id="title">Projects</h3>
 
-                <div class="project-list">
-                    <button class="add-project" id="add-project-btn">
-                        <i class="fa-solid fa-plus"></i>
-                        <p>Add Project</p>
-                    </button>
+                <div class="project-list" id="project-list">
+                    <div class="add-project-form" id="add-project-form">
+                        <input type= 'text' id='pname' name='pname' class= 'project-name' required>
+                        <div class = 'project-form-btns'>
+                            <button class = 'project-form-submit-btn btn' id = 'project-form-submit-btn'>Submit</button>
+                            <button class = 'project-form-cancel-btn btn' id = 'project-form-cancel-btn'>Cancel</button>
+                        </div>
+                    </div>
                 </div>
+
+                <button class="add-project-btn" id="add-project-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    <p>Add Project</p>
+                </button>
             </div>
         </div>
 
