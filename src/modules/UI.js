@@ -1,6 +1,5 @@
 import todoImg from '../assets/to-do.png'
-import Project from './project'
-
+import Controller from './controller'
 
 export default class UI {
 
@@ -37,6 +36,7 @@ export default class UI {
         let addProjectBtn = document.getElementById('add-project-btn')
         addProjectBtn.addEventListener('click', () => {
             console.log('adding project!!!')
+            Controller.openOverlayContainer()
         })
     }
 
