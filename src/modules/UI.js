@@ -42,8 +42,8 @@ export default class UI {
             form.classList.add('open')
         })
 
-        let projectFormCloseBtn = document.getElementById('project-form-cancel-btn')
-        projectFormCloseBtn.addEventListener('click', () => {
+        let closeProjectFormBtn = document.getElementById('project-form-cancel-btn')
+        closeProjectFormBtn.addEventListener('click', () => {
             console.log('close form')
             let form = document.getElementById('add-project-form')
             form.classList.remove('open')
