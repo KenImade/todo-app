@@ -6,6 +6,7 @@ export default class UI {
 
     static loadApp() {
         UI.loadInbox()
+        UI.loadButtons()
     }
 
     static loadInbox() {
@@ -21,18 +22,34 @@ export default class UI {
         return content
     }
 
-    static createAddTaskBtn() {
-        const btn = document.createElement('button')
+    static loadButtons() {
+        let inboxBtn = document.getElementById('inbox-btn')
+        inboxBtn.addEventListener('click', () => {
+            console.log('hello')
+            this.loadInbox()
+        })
 
+        let todayBtn = document.getElementById('today-btn')
+        todayBtn.addEventListener('click', () => {
+            console.log('today')
+            this.loadTodayTasks()
+        })
+
+        let thisweekBtn = document.getElementById('week-btn')
+        thisweekBtn.addEventListener('click', () => {
+            console.log('week')
+            // this.loadThisWeeksTasks()
+        })
     }
 
     static loadTodayTasks() {
         const content = document.getElementById('display')
         const todayPage = document.createElement('div')
         const todayTitle = document.createElement('h3')
-        inboxTitle.innerHTML = 'Today'
+        todayTitle.innerHTML = 'Today'
 
         todayPage.appendChild(todayTitle)
+        content.innerHTML = ''
         content.appendChild(todayPage)
         return content
     }
