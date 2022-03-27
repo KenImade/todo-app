@@ -133,8 +133,42 @@ input[class=project-name] {
     width: 100%;
 }
 
-.project-list .project-form-btns {
+.add-project-form .project-form-btns {
     display: flex;
     flex-direction: row;
     gap: 20px;
+}
+
+.projects .project-list {
+    display: grid;
+    overflow: auto;
+}
+
+.project-list .project-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: $secondarycolor;
+    border: none;
+}
+
+.project-list .project-btn:hover {
+    background-color: rgba($color: #000000, $alpha: 0.4);
+}
+
+.project-btn .project-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-btn i {
+    font-size: 16px;
+}
+
+.project-info span {
+    font-size: 16px;
 }
