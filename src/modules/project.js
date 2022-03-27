@@ -11,7 +11,7 @@ export default class Project {
         return this.name
     }
 
-    getTodaysProjecs() {
+    getTodaysTasks() {
         let todayProjectList = []
 
         for(task in this.projectItems) {
@@ -22,7 +22,7 @@ export default class Project {
         return todayProjectList
     }
 
-    getThisWeeksProjects() {
+    getThisWeeksTasks() {
         let weeksProjectList = []
 
         for (task in this.projectItems) {
@@ -33,7 +33,7 @@ export default class Project {
         return weeksProjectList
     }
 
-    getProjects() {
+    getTasks() {
         return this.projectItems
     }
 
