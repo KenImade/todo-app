@@ -103,7 +103,7 @@ export default class UI {
     static submitProjectForm() {
         let formInput = document.getElementById('pname')
         let projectName = formInput.value
-        this.addToProjectList(projectName)
+        UI.addToProjectList(projectName)
         UI.closeProjectForm()
         formInput.value = ''
     }
@@ -134,5 +134,17 @@ export default class UI {
                 projectDisplayDiv.appendChild(projectBtn)
             }
         }
+        UI.loadProjectBtns()
+    }
+
+    static openProjectPage() {
+
+    }
+
+    static loadProjectBtns() {
+        const projectBtns = document.querySelectorAll('.project-btn')
+        projectBtns.forEach((button => button.addEventListener('click', () => {
+            console.log('hello')
+        }))) 
     }
 }
