@@ -108,14 +108,31 @@ export default class UI {
         formInput.value = ''
     }
 
+    static getProjects() {
+        let allProjects = this.projectList.getAllProjects()
+        return allProjects
+    }
+
     static displayProjects() {
         let projectDisplayDiv = document.getElementById('project-list')
-        for (let i = 0; i < this.projectList.getProjects().length+1; i++) {
-            console.log('got to loop')
-            let project = this.projectList.getProjects()[i]
-            let projectBtn = document.createElement('button')
-            projectBtn.innerHTML = project.getName()
-            projectDisplayDiv.appendChild(projectBtn)
+        let listOfProjects = this.getProjects()
+        projectDisplayDiv.innerHTML = ''
+        for (let i = 0; i < listOfProjects.length; i++) {
+            let project = listOfProjects[i]
+            console.log(project)
+            if (project.getName() !== 'inbox') {
+                let projectBtn = document.createElement('button')
+                projectBtn.classList.add('project-btn')
+                projectBtn.innerHTML = 
+                    `<div class = 'project-info' id = 'project-info'>
+                        <i class="fa-solid fa-list-ul"></i>
+                        <span class='project-name' id = 'project-name'>${project.getName()}</span>
+                    </div>
+                    <div class = 'trash-icon' id = 'trash-icon'>
+                        <i class="fa-solid fa-trash"></i>
+                    </div>`
+                projectDisplayDiv.appendChild(projectBtn)
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ export default class ProjectList {
         this.projectList.push(project)
     }
 
-    getProjects() {
+    getAllProjects() {
         return this.projectList
     }
 }
