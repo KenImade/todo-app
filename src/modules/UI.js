@@ -154,8 +154,13 @@ export default class UI {
         projectBtns.forEach((button => button.addEventListener('click', (ev) => {
             if (ev.target.tagName === 'SPAN') {
                 UI.openProjectPage(ev.target.innerHTML)
+            } else if (ev.target.parentNode.id === 'trash-icon') {
+                console.log(ev.target.parentNode.parentNode)
+                // UI.deleteProject(ev.target.parentNode)
+            } else {
+                return
             }
-            console.log(ev.target.tagName)
+            
         }))) 
     }
 }
