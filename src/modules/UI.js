@@ -137,14 +137,24 @@ export default class UI {
         UI.loadProjectBtns()
     }
 
-    static openProjectPage() {
+    static openProjectPage(name) {
+        const container = document.getElementById('display')
+        container.innerHTML = ''
 
+        const projectPage = document.createElement('div')
+        const projectPageTitle = document.createElement('h3')
+        projectPageTitle.innerHTML = name
+        projectPage.appendChild(projectPageTitle)
+        container.appendChild(projectPage)
     }
 
     static loadProjectBtns() {
         const projectBtns = document.querySelectorAll('.project-btn')
-        projectBtns.forEach((button => button.addEventListener('click', () => {
-            console.log('hello')
+        projectBtns.forEach((button => button.addEventListener('click', (ev) => {
+            if (ev.target.tagName === 'SPAN') {
+                UI.openProjectPage(ev.target.innerHTML)
+            }
+            console.log(ev.target.tagName)
         }))) 
     }
 }
