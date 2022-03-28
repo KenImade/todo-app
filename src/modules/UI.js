@@ -1,6 +1,7 @@
 import todoImg from '../assets/to-do.png'
 import Project from './project'
 import ProjectList from './projectList'
+import voca from 'voca'
 
 
 export default class UI {
@@ -102,7 +103,7 @@ export default class UI {
 
     static submitProjectForm() {
         let formInput = document.getElementById('pname')
-        let projectName = formInput.value
+        let projectName = voca.capitalize(formInput.value.trim())
         UI.addToProjectList(projectName)
         UI.closeProjectForm()
         formInput.value = ''
