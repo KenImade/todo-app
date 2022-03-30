@@ -155,12 +155,13 @@ export default class UI {
             if (ev.target.tagName === 'SPAN') {
                 UI.openProjectPage(ev.target.innerHTML)
             } else if (ev.target.parentNode.id === 'trash-icon') {
-                console.log(ev.target.parentNode.parentNode)
-                // UI.deleteProject(ev.target.parentNode)
+                console.log(ev.target.parentNode.parentNode.querySelector('#project-name').textContent)
+                let projectName = ev.target.parentNode.parentNode.querySelector('#project-name').textContent
+                this.projectList.deleteProject(projectName)
+                UI.displayProjects()
             } else {
                 return
             }
-            
         }))) 
     }
 }
