@@ -88,6 +88,7 @@ export default class UI {
     }
 
     static addToProjectList(name) {
+        if (name === 'Inbox') return
         let newProject = new Project(name)
         this.projectList.addProject(newProject)
         console.log('creating project!')
