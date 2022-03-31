@@ -199,3 +199,10 @@ input[class=project-name] {
     border: none;
     width: 150px;
 }
+
+.project-page .task-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

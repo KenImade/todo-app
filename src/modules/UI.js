@@ -147,6 +147,7 @@ export default class UI {
 
         const projectPage = this.createProjectPage(name)
         container.appendChild(projectPage)
+        UI.loadTaskBtns()
     }
 
     static createTaskBtn() {
@@ -197,6 +198,40 @@ export default class UI {
             } else {
                 return
             }
-        }))) 
+        })))
+    }
+
+    static loadTaskBtns() {
+        const addTaskBtn = document.getElementById('add-task-btn')
+        addTaskBtn.addEventListener('click', () => {
+            console.log('getting task button!')
+            UI.openAddTaskForm()
+        })
+    }
+
+    static openAddTaskForm() {
+        let taskDiv = document.getElementById('task-list')
+        taskDiv.appendChild(UI.createAddTaskForm())
+    }
+
+    static createAddTaskForm() {
+        let form = document.createElement('div')
+        form.id = 'add-task-form'
+        form.classList.add('add-task-form')
+
+        form.innerHTML = 
+            `
+            <label for='taskname'>Task Title:</label>
+            <input type = 'text' id='taskname' name='taskname' class= 'task-name' required><br>
+            <label for='taskdesc'>Description:</label>
+            <input type = 'text' id='taskdesc' name='taskdesc' class= 'task-desc' required><br>
+            <label for='taskdate'>Due date:</label>
+            <input type = 'date' id='taskdate' name='taskdate' class= 'task-date' required>
+            <div class = 'task-form-btns'>
+                <button class = 'task-form-submit-btn btn' id = 'task-form-submit-btn'>Submit</button>
+                <button class = 'task-form-cancel-btn btn' id = 'task-form-cancel-btn'>Cancel</button>
+            </div>
+            `
+        return form 
     }
 }
