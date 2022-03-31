@@ -107,6 +107,7 @@ export default class UI {
         let projectName = voca.capitalize(formInput.value.trim())
         UI.addToProjectList(projectName)
         UI.closeProjectForm()
+        UI.openProjectPage(projectName)
         formInput.value = ''
     }
 
@@ -141,13 +142,45 @@ export default class UI {
 
     static openProjectPage(name) {
         const container = document.getElementById('display')
+
         container.innerHTML = ''
 
-        const projectPage = document.createElement('div')
-        const projectPageTitle = document.createElement('h3')
-        projectPageTitle.innerHTML = name
-        projectPage.appendChild(projectPageTitle)
+        const projectPage = this.createProjectPage(name)
         container.appendChild(projectPage)
+    }
+
+    static createTaskBtn() {
+        let taskBtn = document.createElement('button')
+        taskBtn.classList.add('add-task-btn')
+        taskBtn.id = 'add-task-btn'
+
+        taskBtn.innerHTML = `
+        <div>
+            <i class="fa-solid fa-plus"></i>
+            <span>Add Task</span>
+        </div>`
+
+        return taskBtn
+    }
+
+    static createProjectPage(name) {
+        let projectPage = document.createElement('div')
+        let projectPageTitle = document.createElement('h3')
+        let taskListDiv = document.createElement('div')
+        
+        projectPage.classList.add('project-page')
+        projectPage.id = 'project-page'
+        taskListDiv.classList.add('task-list')
+        taskListDiv.id = 'task-list'
+        
+
+        projectPageTitle.innerHTML = name
+
+        projectPage.appendChild(projectPageTitle)
+        projectPage.appendChild(this.createTaskBtn())
+        projectPage.appendChild(taskListDiv)
+
+        return projectPage
     }
 
     static loadProjectBtns() {
@@ -160,6 +193,7 @@ export default class UI {
                 let projectName = ev.target.parentNode.parentNode.querySelector('#project-name').textContent
                 this.projectList.deleteProject(projectName)
                 UI.displayProjects()
+                UI.loadInbox()
             } else {
                 return
             }
