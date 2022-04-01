@@ -69,10 +69,7 @@ export default class UI {
         let inboxProject = this.projectList.getProject('Inbox')
         let inboxTasks = inboxProject.getAllTasks()
         
-        for(let i = 0; i < inboxTasks.length; i++) {
-            let task = inboxTasks[i]
-            taskDiv.appendChild(UI.createTaskCard(task))
-        }
+        UI.displayTasksInProject(inboxTasks)
         
         console.log(inboxProject)
         console.log(inboxTasks)
@@ -166,6 +163,7 @@ export default class UI {
 
         const projectPage = this.createProjectPage(name)
         container.appendChild(projectPage)
+        let project = 
         UI.loadAddTaskBtn()
     }
 
@@ -250,6 +248,7 @@ export default class UI {
              
                 project.addTaskToProject(taskName, dueDate)
                 this.closeAddTaskForm()
+                this.displayTasksInProject(project.getAllTasks())
                 console.log(project)
             }
         })
@@ -293,9 +292,33 @@ export default class UI {
         return form 
     }
 
-    static createTaskCard() {
+    static createTaskCard(task) {
         let taskCard = document.createElement('div')
+        taskCard.classList.add('task-card')
+        taskCard.id = 'task-card'
+
+        taskCard.innerHTML = `
+                            <div>
+                                <i class="fa-regular fa-circle"></i>
+                                <span class = 'task-card-name' id = 'task-card-name'>${task.getTitle()}</span>
+                            </div>
+                            <div class = 'card-due-date' id = 'card-due-date'>${task.getDueDate()}</div>
+                            `
 
         return taskCard
+    }
+
+    static displayTasksInProject(tasks) {
+        let taskListDiv = document.getElementById('task-list')
+        taskListDiv.innerHTML = ''
+
+        if (tasks.length > 0) {
+            for(let i = 0; i < tasks.length; i++) {
+                let task = tasks[i]
+                taskListDiv.appendChild(this.createTaskCard(task))
+            }
+        }
+
+        return taskListDiv
     }
 }

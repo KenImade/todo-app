@@ -207,7 +207,7 @@ input[class=project-name] {
 .project-page .task-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -227,4 +227,13 @@ input[class=project-name] {
     gap: 10px;
     align-items: center;
     justify-content: center;
+}
+
+.task-list .task-card{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
