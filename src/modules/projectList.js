@@ -3,7 +3,7 @@ import Project from "./project"
 export default class ProjectList {
     constructor () {
         this.projectList = []
-        this.projectList.push(new Project('inbox'))
+        this.projectList.push(new Project('Inbox'))
     }
 
     addProject(project) {
@@ -12,6 +12,15 @@ export default class ProjectList {
 
     getAllProjects() {
         return this.projectList
+    }
+
+    getProject(name) {
+        for(let i = 0; i < this,this.projectList.length; i++) {
+            let project = this.projectList[i]
+            if (project.getName() === name) {
+                return this.projectList[i]
+            }
+        }
     }
 
     deleteProject(name) {
