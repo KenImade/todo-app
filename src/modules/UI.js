@@ -116,6 +116,8 @@ export default class UI {
 
     static closeProjectForm() {
         let form = document.getElementById('add-project-form')
+        let projectName = document.getElementById('pname')
+        projectName.value = ''
         form.classList.remove('open')
     }
 
