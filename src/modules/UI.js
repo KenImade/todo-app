@@ -2,12 +2,16 @@ import todoImg from '../assets/to-do.png'
 import Project from './project'
 import ProjectList from './projectList'
 import Task from './task'
+
 import voca from 'voca'
+import {isToday, format, parseISO} from 'date-fns'
 
 
 export default class UI {
 
     static content = document.getElementById('display')
+
+    static today = format(new Date(), 'yyyy-MM-dd')
 
     static projectList = new ProjectList()
 
@@ -54,14 +58,26 @@ export default class UI {
     }
 
     static loadInbox() {
-        const inboxPage = document.createElement('div')
-        const inboxTitle = document.createElement('h3')
-        inboxTitle.innerHTML = 'Inbox'
-        
-        inboxPage.appendChild(inboxTitle)
-
         UI.resetContentBox()
+        const inboxPage = this.createProjectPage('Inbox')
         this.content.appendChild(inboxPage)
+        
+        
+        let taskDiv = document.getElementById('task-list')
+        taskDiv.innerHTML = ''
+
+        let inboxProject = this.projectList.getProject('Inbox')
+        let inboxTasks = inboxProject.getAllTasks()
+        
+        for(let i = 0; i < inboxTasks.length; i++) {
+            let task = inboxTasks[i]
+            taskDiv.appendChild(UI.createTaskCard(task))
+        }
+        
+        console.log(inboxProject)
+        console.log(inboxTasks)
+
+        UI.loadAddTaskBtn()        
         return this.content
     }
 
@@ -124,7 +140,7 @@ export default class UI {
         for (let i = 0; i < listOfProjects.length; i++) {
             let project = listOfProjects[i]
             console.log(project)
-            if (project.getName() !== 'inbox') {
+            if (project.getName() !== 'Inbox') {
                 let projectBtn = document.createElement('button')
                 projectBtn.classList.add('project-btn')
                 projectBtn.innerHTML = 
@@ -172,6 +188,8 @@ export default class UI {
         
         projectPage.classList.add('project-page')
         projectPage.id = 'project-page'
+        projectPageTitle.id = 'project-title'
+        projectPageTitle.classList.add('project-title')
         taskListDiv.classList.add('task-list')
         taskListDiv.id = 'task-list'
         
@@ -224,10 +242,14 @@ export default class UI {
         saveTaskBtn.addEventListener('click', () => {
             console.log('saving task')
             let taskName = document.getElementById('taskname').value
-            console.log(document.getElementById('task-date'))
+            let dueDate = document.getElementById('taskdate').value
 
-            console.log(taskName)
-            console.log(dueDate)
+            if (taskName !== '') {
+                let projectTitle = document.getElementById('project-title').textContent
+                let project = this.projectList.getProject(projectTitle)
+             
+                project.addTaskToProject(taskName, dueDate)
+            }
         })
 
         const cancelTaskBtn = document.getElementById('task-form-cancel-btn')
@@ -245,7 +267,7 @@ export default class UI {
             `
             <div>
                 <input type = 'text' id='taskname' name='taskname' class= 'task-name' required>
-                <input type = 'date' id='taskdate' name='taskdate' class= 'task-date' required>
+                <input type = 'date' id='taskdate' name='taskdate' class= 'task-date' min= '${this.today}' required>
             </div>
             <div class = 'task-form-btns'>
                 <button class = 'task-form-submit-btn btn' id = 'task-form-submit-btn'>Submit</button>
@@ -253,5 +275,11 @@ export default class UI {
             </div>
             `
         return form 
+    }
+
+    static createTaskCard() {
+        let taskCard = document.createElement('div')
+
+        return taskCard
     }
 }
