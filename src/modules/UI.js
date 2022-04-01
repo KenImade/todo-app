@@ -232,10 +232,8 @@ export default class UI {
     }
 
     static openAddTaskForm() {
-        let taskDiv = document.getElementById('task-list')
-        taskDiv
-        taskDiv.appendChild(UI.createAddTaskForm())
-
+        let taskDiv = document.getElementById('project-page')
+        taskDiv.insertBefore(UI.createAddTaskForm(), taskDiv.children[2])
         this.loadTaskBtns()
     }
 
@@ -251,19 +249,35 @@ export default class UI {
                 let project = this.projectList.getProject(projectTitle)
              
                 project.addTaskToProject(taskName, dueDate)
+                this.closeAddTaskForm()
+                console.log(project)
             }
         })
 
         const cancelTaskBtn = document.getElementById('task-form-cancel-btn')
         cancelTaskBtn.addEventListener('click', () => {
             console.log('cancelling task')
+            this.closeAddTaskForm()
         })
+    }
+
+    static closeAddTaskForm() {
+        console.log('getting to close form func')
+        let taskForm = document.getElementById('add-task-form')
+        let addTaskBtn = document.getElementById('add-task-btn')
+        let taskName = document.getElementById('taskname')
+        let dateValue = document.getElementById('taskdate')
+        taskName.value = ''
+        dateValue.value = ''
+        taskForm.remove()
+        addTaskBtn.classList.remove('hide')
     }
 
     static createAddTaskForm() {
         let form = document.createElement('div')
         form.id = 'add-task-form'
         form.classList.add('add-task-form')
+        form.classList.remove('hide')
 
         form.innerHTML = 
             `
