@@ -1,6 +1,7 @@
 import todoImg from '../assets/to-do.png'
 import Project from './project'
 import ProjectList from './projectList'
+import Task from './task'
 import voca from 'voca'
 
 
@@ -147,7 +148,7 @@ export default class UI {
 
         const projectPage = this.createProjectPage(name)
         container.appendChild(projectPage)
-        UI.loadTaskBtns()
+        UI.loadAddTaskBtn()
     }
 
     static createTaskBtn() {
@@ -178,8 +179,8 @@ export default class UI {
         projectPageTitle.innerHTML = name
 
         projectPage.appendChild(projectPageTitle)
-        projectPage.appendChild(this.createTaskBtn())
         projectPage.appendChild(taskListDiv)
+        projectPage.appendChild(this.createTaskBtn())
 
         return projectPage
     }
@@ -201,17 +202,38 @@ export default class UI {
         })))
     }
 
-    static loadTaskBtns() {
+    static loadAddTaskBtn() {
         const addTaskBtn = document.getElementById('add-task-btn')
         addTaskBtn.addEventListener('click', () => {
             console.log('getting task button!')
+            addTaskBtn.classList.add('hide')
             UI.openAddTaskForm()
-        })
+        })        
     }
 
     static openAddTaskForm() {
         let taskDiv = document.getElementById('task-list')
+        taskDiv
         taskDiv.appendChild(UI.createAddTaskForm())
+
+        this.loadTaskBtns()
+    }
+
+    static loadTaskBtns() {
+        const saveTaskBtn = document.getElementById('task-form-submit-btn')
+        saveTaskBtn.addEventListener('click', () => {
+            console.log('saving task')
+            let taskName = document.getElementById('taskname').value
+            console.log(document.getElementById('task-date'))
+
+            console.log(taskName)
+            console.log(dueDate)
+        })
+
+        const cancelTaskBtn = document.getElementById('task-form-cancel-btn')
+        cancelTaskBtn.addEventListener('click', () => {
+            console.log('cancelling task')
+        })
     }
 
     static createAddTaskForm() {
@@ -221,12 +243,10 @@ export default class UI {
 
         form.innerHTML = 
             `
-            <label for='taskname'>Task Title:</label>
-            <input type = 'text' id='taskname' name='taskname' class= 'task-name' required><br>
-            <label for='taskdesc'>Description:</label>
-            <input type = 'text' id='taskdesc' name='taskdesc' class= 'task-desc' required><br>
-            <label for='taskdate'>Due date:</label>
-            <input type = 'date' id='taskdate' name='taskdate' class= 'task-date' required>
+            <div>
+                <input type = 'text' id='taskname' name='taskname' class= 'task-name' required>
+                <input type = 'date' id='taskdate' name='taskdate' class= 'task-date' required>
+            </div>
             <div class = 'task-form-btns'>
                 <button class = 'task-form-submit-btn btn' id = 'task-form-submit-btn'>Submit</button>
                 <button class = 'task-form-cancel-btn btn' id = 'task-form-cancel-btn'>Cancel</button>

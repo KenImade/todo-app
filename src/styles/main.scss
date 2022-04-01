@@ -200,9 +200,31 @@ input[class=project-name] {
     width: 150px;
 }
 
+.project-page .add-task-btn.hide {
+    display: none;
+}
+
 .project-page .task-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.task-list .add-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-task-form .task-form-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
