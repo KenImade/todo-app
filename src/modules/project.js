@@ -33,12 +33,12 @@ export default class Project {
         return weeksProjectList
     }
 
-    getTasks() {
+    getAllTasks() {
         return this.projectItems
     }
 
-    addTaskToProject(name, desc) {
-        task = new Task(name, desc)
+    addTaskToProject(name, date) {
+        let task = new Task(name, date)
         this.projectItems.push(task)
     }
 
