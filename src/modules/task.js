@@ -4,4 +4,12 @@ export default class Task {
         this.dueDate = dueDate;
         this.completeStatus;
     }
+
+    getTitle() {
+        return this.title
+    }
+
+    getDueDate() {
+        return this.dueDate
+    }
 }
