@@ -1,5 +1,5 @@
 import Task from "./task"
-import { isToday, isThisWeek } from 'date-fns'
+import { isToday, isThisWeek, parseISO } from 'date-fns'
 
 export default class Project {
     constructor(name) {
@@ -14,8 +14,9 @@ export default class Project {
     getTodaysTasks() {
         let todayProjectList = []
 
-        for(task in this.projectItems) {
-            if (isToday(task.getDueDate)) {
+        for(let i = 0; i < this.projectItems.length; i++) {
+            let task = this.projectItems[i]
+            if (isToday(parseISO(task.getDueDate()))) {
                 todayProjectList.push(task)
             }
         }

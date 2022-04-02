@@ -77,9 +77,27 @@ export default class UI {
     static loadTodayTasks() {
         const todayPage = document.createElement('div')
         const todayTitle = document.createElement('h3')
+        const todayListDiv = document.createElement('div')
+
         todayTitle.innerHTML = 'Today'
+        todayListDiv.id = 'today-list'
+        todayListDiv.classList.add('today-list')
+
+        let projects = this.projectList.getAllProjects()
+
+        for(let i = 0; i < projects.length; i++) {
+            let project = projects[i]
+            let todaysTasks = project.getTodaysTasks()
+
+            for (let i = 0; i < todaysTasks.length; i++) {
+                let task = todaysTasks[i]
+                todayListDiv.appendChild(this.createTaskCard(task))
+            }
+        }
 
         todayPage.appendChild(todayTitle)
+        todayPage.appendChild(todayListDiv)
+
         UI.resetContentBox()
         this.content.appendChild(todayPage)
         return this.content
