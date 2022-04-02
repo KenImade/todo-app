@@ -237,3 +237,17 @@ input[class=project-name] {
     align-items: center;
     width: 100%;
 }
+
+.display .today-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    gap: 10px;
+}
+
+.today-list .task-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
