@@ -238,7 +238,8 @@ input[class=project-name] {
     width: 100%;
 }
 
-.display .today-list {
+.display .today-list,
+.display .this-week-list {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -246,7 +247,8 @@ input[class=project-name] {
     gap: 10px;
 }
 
-.today-list .task-card {
+.today-list .task-card,
+.this-week-list .task-card {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
