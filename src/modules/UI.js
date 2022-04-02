@@ -70,7 +70,7 @@ export default class UI {
         console.log(inboxProject)
         console.log(inboxTasks)
 
-        UI.loadAddTaskBtn()        
+        UI.loadAddTaskBtn()
         return this.content
     }
 
@@ -342,6 +342,22 @@ export default class UI {
         return taskCard
     }
 
+    static loadTaskCardBtns() {
+        const taskListDiv = document.getElementById('task-list')
+        const deleteTaskBtns = taskListDiv.querySelectorAll('i')
+        deleteTaskBtns.forEach(button => button.addEventListener('click', (ev) => {
+            let projectCard = ev.target.parentNode.parentNode
+            let taskName = projectCard.children[0].children[1].innerHTML
+            let projectName = document.getElementById('project-title').textContent
+            let project = this.projectList.getProject(projectName)
+            project.deleteTaskFromProject(taskName)
+
+            console.log(project)
+            console.log(taskName)
+            UI.displayTasksInProject(project.getAllTasks())
+        }))
+    }
+
     static displayTasksInProject(tasks) {
         let taskListDiv = document.getElementById('task-list')
         taskListDiv.innerHTML = ''
@@ -351,8 +367,8 @@ export default class UI {
                 let task = tasks[i]
                 taskListDiv.appendChild(this.createTaskCard(task))
             }
+            UI.loadTaskCardBtns()
         }
-
         return taskListDiv
     }
 }

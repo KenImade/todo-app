@@ -44,17 +44,9 @@ export default class Project {
         this.projectItems.push(task)
     }
 
-    getTaskFromProject(name) {
-        for (task in this.projectItems) {
-            if (task.name === name) {
-                return task
-            }
-        }
-    }
-
     deleteTaskFromProject(name) {
-        for (let i = 0; i < this.projectItems+1; i++ ) {
-            if (this.projectItems[i].name === name) {
+        for (let i = 0; i < this.projectItems.length; i++ ) {
+            if (this.projectItems[i].getTitle() === name) {
                 this.projectItems.splice(i, 1)
             }
         }
