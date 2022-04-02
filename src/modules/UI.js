@@ -106,11 +106,28 @@ export default class UI {
     static loadThisWeeksTasks() {
         const thisweekPage = document.createElement('div')
         const thisweekTitle = document.createElement('h3')
+        const thisweekListDiv = document.createElement('div')
+
         thisweekTitle.innerHTML = 'This Week'
+        thisweekListDiv.id = 'this-week-list'
+        thisweekListDiv.classList.add('this-week-list')
+
+        let projects = this.projectList.getAllProjects()
+
+        for (let i = 0; i < projects.length; i++) {
+            let project = projects[i]
+            let thisWeekTasks = project.getThisWeeksTasks()
+
+            for(let i = 0; i < thisWeekTasks.length; i++) {
+                let task = thisWeekTasks[i]
+                thisweekListDiv.appendChild(this.createTaskCard(task))
+            }
+        }
 
         thisweekPage.appendChild(thisweekTitle)
-        UI.resetContentBox()
+        thisweekPage.appendChild(thisweekListDiv)
 
+        UI.resetContentBox()
         this.content.appendChild(thisweekPage)
         return this.content
     }

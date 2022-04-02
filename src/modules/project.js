@@ -26,8 +26,9 @@ export default class Project {
     getThisWeeksTasks() {
         let weeksProjectList = []
 
-        for (task in this.projectItems) {
-            if (isThisWeek(task.getDueDate)) {
+        for(let i = 0; i < this.projectItems.length; i++) {
+            let task = this.projectItems[i]
+            if (isThisWeek(parseISO(task.getDueDate()))) {
                 weeksProjectList.push(task)
             }
         }
