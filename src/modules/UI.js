@@ -62,10 +62,6 @@ export default class UI {
         const inboxPage = this.createProjectPage('Inbox')
         this.content.appendChild(inboxPage)
         
-        
-        let taskDiv = document.getElementById('task-list')
-        taskDiv.innerHTML = ''
-
         let inboxProject = this.projectList.getProject('Inbox')
         let inboxTasks = inboxProject.getAllTasks()
         
@@ -158,12 +154,16 @@ export default class UI {
 
     static openProjectPage(name) {
         const container = document.getElementById('display')
-
         container.innerHTML = ''
 
         const projectPage = this.createProjectPage(name)
         container.appendChild(projectPage)
-        let project = 
+
+        let project = this.projectList.getProject(name)
+        let projectTasks = project.getAllTasks()
+
+        UI.displayTasksInProject(projectTasks)
+
         UI.loadAddTaskBtn()
     }
 
@@ -304,7 +304,6 @@ export default class UI {
                             </div>
                             <div class = 'card-due-date' id = 'card-due-date'>${task.getDueDate()}</div>
                             `
-
         return taskCard
     }
 
